@@ -8,6 +8,7 @@ export * from "./query/index.js"
 export * from "./optimistic-action"
 export * from "./local-only"
 export * from "./local-storage"
+export * from "./indexed-db"
 export * from "./errors"
 
 // Index system exports
