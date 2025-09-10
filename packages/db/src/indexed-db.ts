@@ -193,10 +193,10 @@ export function indexedDBCollectionOptions<
 
   // Validate required parameters
   if (!config.dbName) {
-    throw new StorageKeyRequiredError(`dbName is required`)
+    throw new StorageKeyRequiredError()
   }
   if (!config.storeName) {
-    throw new StorageKeyRequiredError(`storeName is required`)
+    throw new StorageKeyRequiredError()
   }
 
   // Default to window.indexedDB if no indexedDB is provided
@@ -205,7 +205,7 @@ export function indexedDBCollectionOptions<
     (typeof window !== `undefined` ? window.indexedDB : null)
 
   if (!indexedDB) {
-    throw new NoStorageAvailableError(`IndexedDB is not available`)
+    throw new NoStorageAvailableError()
   }
 
   // Track the last known state to detect changes
@@ -475,6 +475,7 @@ export function indexedDBCollectionOptions<
     ...restConfig,
     id: collectionId,
     sync,
+    startSync: true,
     onInsert: wrappedOnInsert,
     onUpdate: wrappedOnUpdate,
     onDelete: wrappedOnDelete,

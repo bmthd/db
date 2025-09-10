@@ -45,7 +45,7 @@ describe(`IndexedDB collection type definitions`, () => {
       () => Promise<number>
     >()
     expectTypeOf(collection.id).toEqualTypeOf<string>()
-    expectTypeOf(collection.toArray()).toEqualTypeOf<Array<User>>()
+    expectTypeOf(collection.get(`test`)).toEqualTypeOf<User | undefined>()
     expectTypeOf(collection.insert).toEqualTypeOf<
       (item: User) => Promise<void>
     >()
@@ -66,7 +66,7 @@ describe(`IndexedDB collection type definitions`, () => {
       })
     )
 
-    expectTypeOf(collection.toArray()).toEqualTypeOf<Array<User>>()
+    expectTypeOf(collection.get(`test`)).toEqualTypeOf<User | undefined>()
   })
 
   it(`should work with schema inference`, () => {
@@ -79,8 +79,8 @@ describe(`IndexedDB collection type definitions`, () => {
       })
     )
 
-    expectTypeOf(collection.toArray()).toEqualTypeOf<
-      Array<Record<string, unknown>>
+    expectTypeOf(collection.get(`test`)).toEqualTypeOf<
+      Record<string, unknown> | undefined
     >()
   })
 })
